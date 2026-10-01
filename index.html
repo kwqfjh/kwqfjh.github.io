@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>My Projects</title>
 
+
     <style>
+
         * {
             box-sizing: border-box;
         }
 
+
         body {
+
             margin: 0;
+
             min-height: 100vh;
 
             font-family: Arial, Helvetica, sans-serif;
 
             background:
-                radial-gradient(circle at top, #26344d, #0b0f17 65%);
+                radial-gradient(
+                    circle at top,
+                    #26344d,
+                    #0b0f17 70%
+                );
 
             color: white;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
 
         .portfolio {
+
             width: 92%;
+
             max-width: 1100px;
+
             text-align: center;
+
         }
+
 
         .heading {
+
             margin-bottom: 25px;
+
         }
+
 
         .heading h1 {
+
             font-size: 48px;
+
             margin: 0;
+
         }
+
 
         .heading p {
+
             color: #9ca3af;
+
             margin-top: 8px;
+
+            font-size: 17px;
+
         }
 
+
         .slideshow {
+
             position: relative;
 
             background: rgba(255, 255, 255, 0.07);
@@ -58,62 +93,75 @@
 
             padding: 30px;
 
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35);
+
         }
 
+
         .preview {
+
             height: 430px;
 
             border-radius: 18px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #374151,
-                    #111827
-                );
-
             overflow: hidden;
 
-            position: relative;
+            background: #111827;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
         }
 
-        .preview::after {
-            content: "";
 
-            position: absolute;
+        .preview img {
 
-            width: 400px;
-            height: 400px;
+            width: 100%;
 
-            border-radius: 50%;
+            height: 100%;
 
-            background: rgba(255,255,255,0.04);
+            object-fit: contain;
 
-            filter: blur(5px);
+            border-radius: 18px;
+
+            transition: opacity 0.3s ease;
+
         }
 
-        .preview-title {
-            font-size: 64px;
+
+        .no-image {
+
+            font-size: 45px;
+
             font-weight: bold;
 
-            z-index: 1;
+            color: #6b7280;
+
         }
+
 
         .info {
+
             padding: 25px 10px 10px;
+
         }
+
 
         .info h2 {
+
             font-size: 36px;
+
             margin: 0 0 10px;
+
         }
 
+
         .info p {
+
             color: #cbd5e1;
 
             font-size: 18px;
@@ -123,13 +171,19 @@
             max-width: 700px;
 
             margin: auto;
+
         }
+
 
         .buttons {
+
             margin-top: 22px;
+
         }
 
+
         .button {
+
             display: inline-block;
 
             padding: 12px 22px;
@@ -143,35 +197,50 @@
             font-weight: bold;
 
             transition: transform 0.15s;
+
         }
+
 
         .button:hover {
+
             transform: translateY(-2px);
+
         }
+
 
         .github {
+
             background: white;
+
             color: #111827;
+
         }
+
 
         .demo {
+
             background: #2563eb;
+
             color: white;
+
         }
 
+
         .arrow {
+
             position: absolute;
 
             top: 210px;
 
             width: 50px;
+
             height: 50px;
 
             border: none;
 
             border-radius: 50%;
 
-            background: rgba(0,0,0,0.55);
+            background: rgba(0, 0, 0, 0.65);
 
             color: white;
 
@@ -182,29 +251,46 @@
             z-index: 5;
 
             transition: 0.15s;
+
         }
+
 
         .arrow:hover {
-            background: rgba(0,0,0,0.8);
+
+            background: rgba(0, 0, 0, 0.9);
+
             transform: scale(1.08);
+
         }
+
 
         .left {
+
             left: 45px;
+
         }
+
 
         .right {
+
             right: 45px;
+
         }
+
 
         .dots {
+
             margin-top: 20px;
+
         }
 
+
         .dot {
+
             display: inline-block;
 
             width: 10px;
+
             height: 10px;
 
             margin: 5px;
@@ -216,136 +302,249 @@
             cursor: pointer;
 
             transition: 0.2s;
+
         }
+
 
         .dot.active {
+
             background: white;
+
             transform: scale(1.3);
+
         }
 
+
         .counter {
+
             color: #6b7280;
 
             margin-top: 12px;
 
             font-size: 14px;
+
         }
 
+
         .hint {
+
             color: #6b7280;
 
             margin-top: 20px;
 
             font-size: 14px;
+
         }
+
 
         @media (max-width: 700px) {
 
             .heading h1 {
+
                 font-size: 36px;
+
             }
+
 
             .preview {
+
                 height: 300px;
+
             }
 
-            .preview-title {
-                font-size: 42px;
-            }
 
             .arrow {
+
                 top: 140px;
+
             }
+
 
             .left {
-                left: 40px;
+
+                left: 20px;
+
             }
 
+
             .right {
-                right: 40px;
+
+                right: 20px;
+
             }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
 
+
 <div class="portfolio">
 
+
     <div class="heading">
+
         <h1>My Projects</h1>
-        <p>A selection of things I've built with Hack Club</p>
+
+        <p>A selection of things I've built</p>
+
     </div>
+
 
 
     <div class="slideshow">
 
-        <button class="arrow left" onclick="previousProject()">
+
+        <!-- Previous button -->
+
+        <button
+            class="arrow left"
+            onclick="previousProject()">
+
             ←
+
         </button>
 
-        <button class="arrow right" onclick="nextProject()">
+
+
+        <!-- Next button -->
+
+        <button
+            class="arrow right"
+            onclick="nextProject()">
+
             →
+
         </button>
 
+
+
+        <!-- Project image -->
 
         <div class="preview">
-            <div class="preview-title" id="previewTitle"></div>
-        </div>
+
+            <img
+                id="previewImage"
+                src=""
+                alt="Project preview">
 
 
-        <div class="info">
+            <div
+                class="no-image"
+                id="noImage">
 
-            <h2 id="projectTitle"></h2>
-
-            <p id="description"></p>
-
-
-            <div class="buttons">
-
-                <a
-                    id="github"
-                    class="button github"
-                    target="_blank">
-                    View on GitHub
-                </a>
-
-
-                <a
-                    id="demo"
-                    class="button demo"
-                    target="_blank">
-                    Live Demo
-                </a>
+                Coming soon
 
             </div>
 
         </div>
 
+
+
+        <!-- Project information -->
+
+        <div class="info">
+
+
+            <h2 id="projectTitle"></h2>
+
+
+            <p id="description"></p>
+
+
+
+            <div class="buttons">
+
+
+                <!-- GitHub button -->
+
+                <a
+                    id="github"
+                    class="button github"
+                    target="_blank">
+
+                    View on GitHub
+
+                </a>
+
+
+
+                <!-- Live demo button -->
+
+                <a
+                    id="demo"
+                    class="button demo"
+                    target="_blank">
+
+                    Live Demo
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
     </div>
 
 
-    <div class="dots" id="dots"></div>
 
-    <div class="counter" id="counter"></div>
+    <!-- Navigation dots -->
+
+    <div
+        class="dots"
+        id="dots">
+    </div>
+
+
+
+    <!-- Project counter -->
+
+    <div
+        class="counter"
+        id="counter">
+    </div>
+
+
 
     <div class="hint">
-        Use ← → to navigate
+
+        Use ← and → to navigate
+
     </div>
+
 
 </div>
 
 
+
 <script>
+
+
+/*
+    ==========================================
+    YOUR PROJECTS
+    ==========================================
+*/
+
 
 const projects = [
 
+
     {
-        title: "Boba Drops project",
+        title: "CARS",
 
         description:
             "A website project I built.",
+
+        image:
+            "images/cars.png",
 
         github:
             "https://github.com/kwqfjh/CARS",
@@ -356,10 +555,13 @@ const projects = [
 
 
     {
-        title: "Macropad designed and built by me and funded by Hack Club",
+        title: "Tuffpad",
 
         description:
             "A custom macropad project with a PCB, firmware, CAD-designed case and OLED display.",
+
+        image:
+            "images/macropad.png",
 
         github:
             "https://github.com/kwqfjh/reuben-s-tuffpad",
@@ -370,10 +572,13 @@ const projects = [
 
 
     {
-        title: "Ruler (Hack Club CAD Project)",
+        title: "Ruler",
 
         description:
-            "A ruler",
+            "A project I built around a digital ruler.",
+
+        image:
+            "images/ruler.png",
 
         github:
             "https://github.com/kwqfjh/ruler",
@@ -384,10 +589,13 @@ const projects = [
 
 
     {
-        title: "3D Website",
+        title: "Reuben's Farm",
 
         description:
-            "A low poly 3d farm I built",
+            "A web project I built.",
+
+        image:
+            "images/farm.png",
 
         github:
             "https://github.com/kwqfjh/reubensfarm",
@@ -398,19 +606,32 @@ const projects = [
 
 
     {
-        title: "Live demo",
+        title: "Boba",
 
         description:
-            "A Boba Drops web project with a live online demo.",
+            "A web project with a live online demo.",
+
+        image:
+            null,
 
         github:
             "https://github.com/heelas-uk/boba",
 
         demo:
             "https://heelas-uk.github.io/boba/"
+
     }
 
+
 ];
+
+
+
+/*
+    ==========================================
+    SLIDESHOW
+    ==========================================
+*/
 
 
 let current = 0;
@@ -418,155 +639,340 @@ let current = 0;
 let timer;
 
 
+
 function displayProject() {
 
-    const project = projects[current];
+
+    const project =
+        projects[current];
 
 
-    document.getElementById("previewTitle").textContent =
+
+    /*
+        Project title
+    */
+
+    document
+        .getElementById("projectTitle")
+        .textContent =
         project.title;
 
 
-    document.getElementById("projectTitle").textContent =
-        project.title;
 
+    /*
+        Project description
+    */
 
-    document.getElementById("description").textContent =
+    document
+        .getElementById("description")
+        .textContent =
         project.description;
 
 
-    document.getElementById("github").href =
+
+    /*
+        GitHub link
+    */
+
+    document
+        .getElementById("github")
+        .href =
         project.github;
 
+
+
+    /*
+        Project image
+    */
+
+    const image =
+        document.getElementById("previewImage");
+
+
+    const noImage =
+        document.getElementById("noImage");
+
+
+
+    if (project.image) {
+
+
+        image.src =
+            project.image;
+
+
+        image.style.display =
+            "block";
+
+
+        noImage.style.display =
+            "none";
+
+
+    } else {
+
+
+        image.style.display =
+            "none";
+
+
+        noImage.style.display =
+            "block";
+
+    }
+
+
+
+    /*
+        Live demo button
+    */
 
     const demo =
         document.getElementById("demo");
 
 
+
     if (project.demo) {
 
-        demo.href = project.demo;
 
-        demo.style.display = "inline-block";
+        demo.href =
+            project.demo;
+
+
+        demo.style.display =
+            "inline-block";
+
 
     } else {
 
-        demo.style.display = "none";
+
+        demo.style.display =
+            "none";
 
     }
 
 
-    document.getElementById("counter").textContent =
+
+    /*
+        Counter
+    */
+
+    document
+        .getElementById("counter")
+        .textContent =
         `${current + 1} / ${projects.length}`;
 
+
+
+    /*
+        Navigation dots
+    */
 
     createDots();
 
 }
 
 
+
 function createDots() {
+
 
     const dots =
         document.getElementById("dots");
 
-    dots.innerHTML = "";
+
+    dots.innerHTML =
+        "";
 
 
-    projects.forEach((project, index) => {
 
-        const dot =
-            document.createElement("span");
-
-        dot.className = "dot";
+    projects.forEach(
+        (project, index) => {
 
 
-        if (index === current) {
-            dot.classList.add("active");
+            const dot =
+                document.createElement("span");
+
+
+            dot.className =
+                "dot";
+
+
+
+            if (index === current) {
+
+                dot.classList.add(
+                    "active"
+                );
+
+            }
+
+
+
+            dot.onclick =
+                function() {
+
+
+                    current =
+                        index;
+
+
+                    displayProject();
+
+
+                    restartTimer();
+
+                };
+
+
+
+            dots.appendChild(dot);
+
         }
 
-
-        dot.onclick = function() {
-
-            current = index;
-
-            displayProject();
-
-            restartTimer();
-
-        };
-
-
-        dots.appendChild(dot);
-
-    });
+    );
 
 }
+
+
+
+/*
+    ==========================================
+    NEXT PROJECT
+    ==========================================
+*/
 
 
 function nextProject() {
 
+
     current++;
 
-    if (current >= projects.length) {
+
+    if (
+        current >=
+        projects.length
+    ) {
+
         current = 0;
+
     }
 
+
     displayProject();
+
 
     restartTimer();
 
 }
+
+
+
+/*
+    ==========================================
+    PREVIOUS PROJECT
+    ==========================================
+*/
 
 
 function previousProject() {
 
+
     current--;
 
+
     if (current < 0) {
-        current = projects.length - 1;
+
+        current =
+            projects.length - 1;
+
     }
 
+
     displayProject();
+
 
     restartTimer();
 
 }
+
+
+
+/*
+    ==========================================
+    KEYBOARD CONTROLS
+    ==========================================
+*/
 
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "ArrowRight") {
+
+        if (
+            event.key ===
+            "ArrowRight"
+        ) {
+
             nextProject();
+
         }
 
-        if (event.key === "ArrowLeft") {
+
+        if (
+            event.key ===
+            "ArrowLeft"
+        ) {
+
             previousProject();
+
         }
 
     }
 );
 
 
+
+/*
+    ==========================================
+    AUTOMATIC SLIDESHOW
+    ==========================================
+*/
+
+
 function restartTimer() {
+
 
     clearInterval(timer);
 
-    timer = setInterval(
-        nextProject,
-        8000
-    );
+
+    timer =
+        setInterval(
+            nextProject,
+            8000
+        );
 
 }
 
 
+
+/*
+    ==========================================
+    START
+    ==========================================
+*/
+
+
 displayProject();
+
 
 restartTimer();
 
+
 </script>
 
+
 </body>
+
 </html>
