@@ -1,19 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Projects</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .counter {
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        .project {
+            background: #1f2937;
+            border-radius: 20px;
+            padding: 50px;
+            min-height: 400px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project h2 {
+            font-size: 40px;
+            margin: 10px;
+        }
+
+        .project p {
+            font-size: 20px;
+            color: #d1d5db;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button,
+        .link-button {
+            border: none;
+            border-radius: 10px;
+            padding: 14px 25px;
+            margin: 5px;
+
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav {
+            background: #374151;
+            color: white;
+        }
+
+        .github {
+            background: #ffffff;
+            color: #111827;
+        }
+
+        .demo {
+            background: #2563eb;
+            color: white;
+        }
+
+        button:hover,
+        .link-button:hover {
+            transform: scale(1.05);
+        }
+
+        .keyboard {
+            margin-top: 25px;
+            color: #6b7280;
+        }
+    </style>
 </head>
 
 <body>
 
+<div class="container">
+
     <h1>My Projects</h1>
 
-    <h2>Project 1</h2>
-    <p>This is one of my projects.</p>
+    <div class="counter" id="counter"></div>
 
-    <a href="https://github.com/kwqfjh">
-        My GitHub
-    </a>
+    <div class="project">
+
+        <h2 id="title"></h2>
+
+        <p id="description"></p>
+
+        <div class="buttons">
+
+            <button class="nav" onclick="previousProject()">
+                ← Previous
+            </button>
+
+            <button class="nav" onclick="nextProject()">
+                Next →
+            </button>
+
+            <a id="github"
+               class="link-button github"
+               target="_blank">
+                GitHub
+            </a>
+
+            <a id="demo"
+               class="link-button demo"
+               target="_blank"
+               style="display:none;">
+                Live Demo
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="keyboard">
+        Use ← and → on your keyboard to change projects
+    </div>
+
+</div>
+
+
+<script>
+
+const projects = [
+
+    {
+        title: "CARS",
+        description: "A website project I built.",
+        github: "https://github.com/kwqfjh/CARS"
+    },
+
+    {
+        title: "Reuben's Tuffpad",
+        description: "A custom macropad project with a PCB, firmware, CAD-designed case and OLED display.",
+        github: "https://github.com/kwqfjh/reuben-s-tuffpad"
+    },
+
+    {
+        title: "Ruler",
+        description: "A project for creating a digital ruler.",
+        github: "https://github.com/kwqfjh/ruler"
+    },
+
+    {
+        title: "Reuben's Farm",
+        description: "A web project I built.",
+        github: "https://github.com/kwqfjh/reubensfarm"
+    },
+
+    {
+        title: "Boba",
+        description: "A web project with a live online demo.",
+        github: "https://github.com/heelas-uk/boba",
+        demo: "https://heelas-uk.github.io/boba/"
+    }
+
+];
+
+let current = 0;
+
+
+function showProject() {
+
+    const project = projects[current];
+
+    document.getElementById("title").textContent = project.title;
+
+    document.getElementById("description").textContent = project.description;
+
+    document.getElementById("counter").textContent =
+        `${current + 1} / ${projects.length}`;
+
+    document.getElementById("github").href = project.github;
+
+
+    const demo = document.getElementById("demo");
+
+    if (project.demo) {
+        demo.href = project.demo;
+        demo.style.display = "inline-block";
+    } else {
+        demo.style.display = "none";
+    }
+}
+
+
+function nextProject() {
+
+    current++;
+
+    if (current >= projects.length) {
+        current = 0;
+    }
+
+    showProject();
+}
+
+
+function previousProject() {
+
+    current--;
+
+    if (current < 0) {
+        current = projects.length - 1;
+    }
+
+    showProject();
+}
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") {
+        nextProject();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousProject();
+    }
+
+});
+
+
+showProject();
+
+</script>
 
 </body>
 </html>
